@@ -1,11 +1,13 @@
 package com.lhv.account.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 
 @Data
+@NoArgsConstructor
 public class ErrorResponse {
     private LocalDateTime timestamp;
     private int status;
