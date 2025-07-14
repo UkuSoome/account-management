@@ -10,20 +10,33 @@ This project is a Spring Boot REST API for managing accounts.
 
 ## Running the Application Locally
 
-1. Start the MySQL database using Docker Compose:
+### Option 1: Use this when running the Spring Boot app directly with Gradle or IntelliJ.
 
+Start the MySQL database using the local override file:
 ```bash
-docker-compose up -d
+docker-compose -f docker-compose.local.yml up -d
 ```
 
-This will start a MySQL container configured for the project.
+This will start a MySQL container configured for local development.
 
-Build and run the Spring Boot Application
-
+Then build and run the Spring Boot application locally:
 ```bash
 ./gradlew build
 ./gradlew bootRun
 ```
+Alternatively, just run it from IntelliJ.
+
+
+### Option 2: Fully Dockerized (App + MySQL)
+
+Use this to build and run everything inside Docker containers.
+
+```bash
+docker-compose up -d --build
+```
+
+Then access the app at:
+http://localhost:8080
 
 ## Swagger UI
 
