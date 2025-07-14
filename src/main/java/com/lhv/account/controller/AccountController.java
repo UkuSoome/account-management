@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/accounts")
 @Tag(name = "Accounts", description = "Operations related to accounts")
 public class AccountController {
     private final AccountService accountService;
@@ -35,7 +34,7 @@ public class AccountController {
                             content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
             }
     )
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/accounts", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AccountResponse> createAccount(
             @Validated @RequestBody CreateAccountRequest accountRequest) {
         AccountResponse response = accountService.createAccount(accountRequest);
@@ -59,7 +58,7 @@ public class AccountController {
                             content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
             }
     )
-    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/accounts/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AccountResponse> updateAccount(
             @PathVariable Long id,
             @Validated @RequestBody UpdateAccountRequest updateRequest) {
@@ -76,7 +75,7 @@ public class AccountController {
                             content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
             }
     )
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/account/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AccountResponse> getAccountById(
             @PathVariable Long id) {
         AccountResponse account = accountService.findAccount(id);
@@ -92,7 +91,7 @@ public class AccountController {
                             content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
             }
     )
-    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/accounts/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AccountResponse> deleteAccountById(
             @PathVariable Long id) {
         AccountResponse account = accountService.deleteAccount(id);

@@ -25,8 +25,6 @@ Build and run the Spring Boot Application
 ./gradlew bootRun
 ```
 
-The API will be available at: http://localhost:8080/api/accounts
-
 ## Swagger UI
 
 API documentation and testing UI is available at:
