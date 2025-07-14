@@ -1,21 +1,17 @@
 spring:
-  application:
-    name: account
   datasource:
-    url: jdbc:mysql://localhost:3306/demo_db
-    username: root
-    password: password
+    url: jdbc:mysql://localhost:3306/ignored-by-testcontainers
+    username: dummy
+    password: dummy
     driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
     hibernate:
       ddl-auto: none
+
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
     enabled: true
-
-server:
-  servlet:
-    context-path: /api
 
 logging:
   level:

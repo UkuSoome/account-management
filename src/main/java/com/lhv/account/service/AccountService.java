@@ -9,11 +9,13 @@ import com.lhv.account.model.Action;
 import com.lhv.account.repository.AccountRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import static com.lhv.account.dto.AccountResponse.fromAccount;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class AccountService {
     private final AccountRepository accountRepository;
 
@@ -28,6 +30,10 @@ public class AccountService {
     }
 
     public AccountResponse updateAccount(Long id, UpdateAccountRequest updateRequest) {
+        if (updateRequest.getName() == null && updateRequest.getPhoneNr() == null) {
+            throw new IllegalArgumentException("At least one field must be provided for update.");
+        }
+
         Account account = accountRepository.findById(id)
                 .orElseThrow(() -> new AccountNotFoundException("Account not found with id " + id));
 
@@ -39,6 +45,7 @@ public class AccountService {
         return AccountResponse.fromAccount(Action.UPDATED, saved);
     }
 
+    @Transactional(readOnly = true)
     public AccountResponse findAccount(Long id) {
         Account account = accountRepository.findById(id)
                 .orElseThrow(() -> new AccountNotFoundException("Account not found with id " + id));
