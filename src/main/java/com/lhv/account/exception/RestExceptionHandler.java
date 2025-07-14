@@ -20,6 +20,7 @@ public class RestExceptionHandler {
     public ResponseEntity<Object> handleAccountNotFoundException(
             AccountNotFoundException ex,
             HttpServletRequest request) {
+        log.error("Account not found: {} at {}", ex.getMessage(), request.getRequestURI(), ex);
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.NOT_FOUND,
                 ex.getMessage(),
@@ -37,6 +38,7 @@ public class RestExceptionHandler {
                     .append(error.getDefaultMessage())
                     .append("; ");
         }
+        log.error("Validation failed: {} at {}", message, request.getRequestURI(), ex);
         ErrorResponse errorResponse = new ErrorResponse(
                 HttpStatus.BAD_REQUEST,
                 message.toString(),
@@ -48,6 +50,7 @@ public class RestExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorResponse> handleIllegalArgument(IllegalArgumentException ex, HttpServletRequest request) {
+        log.error("Illegal argument: {} at {}", ex.getMessage(), request.getRequestURI(), ex);
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.BAD_REQUEST,
                 ex.getMessage(),
@@ -60,6 +63,7 @@ public class RestExceptionHandler {
     public ResponseEntity<Object> handleRuntimeException(
             RuntimeException ex,
             HttpServletRequest request) {
+        log.error("Unexpected runtime exception: {} at {}", ex.getMessage(), request.getRequestURI(), ex);
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 ex.getMessage(),
