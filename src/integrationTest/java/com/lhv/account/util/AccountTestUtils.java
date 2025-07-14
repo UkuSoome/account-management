@@ -13,7 +13,7 @@ public class AccountTestUtils {
 
         return client
                 .post()
-                .uri("/api/accounts")
+                .uri("/accounts")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(request)
                 .exchange()

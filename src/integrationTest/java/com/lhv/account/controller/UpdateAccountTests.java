@@ -59,7 +59,7 @@ public class UpdateAccountTests extends AbstractIntegrationTest {
 
         AccountResponse response = client
                 .put()
-                .uri("/api/accounts/{id}", accountId)
+                .uri("/accounts/{id}", accountId)
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(request)
                 .exchange()
@@ -85,7 +85,7 @@ public class UpdateAccountTests extends AbstractIntegrationTest {
 
         AccountResponse response = client
                 .put()
-                .uri("/api/accounts/{id}", accountId)
+                .uri("/accounts/{id}", accountId)
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(request)
                 .exchange()
@@ -110,7 +110,7 @@ public class UpdateAccountTests extends AbstractIntegrationTest {
 
         String errorBody = client
                 .put()
-                .uri("/api/accounts/{id}", 99999)
+                .uri("/accounts/{id}", 99999)
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(updateRequest)
                 .exchange()
@@ -133,7 +133,7 @@ public class UpdateAccountTests extends AbstractIntegrationTest {
 
         String response = client
                 .put()
-                .uri("/api/accounts/{id}", created.getId())
+                .uri("/accounts/{id}", created.getId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(request)
                 .exchange()
@@ -158,7 +158,7 @@ public class UpdateAccountTests extends AbstractIntegrationTest {
 
         String errorBody = client
                 .put()
-                .uri("/api/accounts/{id}", accountId)
+                .uri("/accounts/{id}", accountId)
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(request)
                 .exchange()
@@ -183,7 +183,7 @@ public class UpdateAccountTests extends AbstractIntegrationTest {
 
         String errorBody = client
                 .put()
-                .uri("/api/accounts/{id}", accountId)
+                .uri("/accounts/{id}", accountId)
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(request)
                 .exchange()

@@ -13,10 +13,6 @@ spring:
     change-log: classpath:db/changelog/db.changelog-master.yaml
     enabled: true
 
-server:
-  servlet:
-    context-path: /api
-
 logging:
   level:
     root: INFO

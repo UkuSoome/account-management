@@ -47,7 +47,7 @@ public class GetAccountTests extends AbstractIntegrationTest {
 
         AccountResponse found = client
                 .get()
-                .uri("/api/account/{id}", created.getId())
+                .uri("/account/{id}", created.getId())
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(AccountResponse.class)
@@ -64,7 +64,7 @@ public class GetAccountTests extends AbstractIntegrationTest {
     void shouldFailToFindNonExistingAccount() throws Exception {
         String errorBody = client
                 .get()
-                .uri("/api/account/{id}", 99999)
+                .uri("/account/{id}", 99999)
                 .exchange()
                 .expectStatus().isNotFound()
                 .expectBody(String.class)

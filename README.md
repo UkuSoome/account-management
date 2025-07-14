@@ -29,7 +29,7 @@ Build and run the Spring Boot Application
 
 API documentation and testing UI is available at:
 
-http://localhost:8080/api/swagger-ui/index.html
+http://localhost:8080/swagger-ui/index.html
 
 ## Running Tests
 

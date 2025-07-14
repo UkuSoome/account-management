@@ -47,7 +47,7 @@ public class DeleteAccountTests extends AbstractIntegrationTest {
 
         AccountResponse deleted = client
                 .delete()
-                .uri("/api/accounts/{id}", created.getId())
+                .uri("/accounts/{id}", created.getId())
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(AccountResponse.class)
@@ -63,7 +63,7 @@ public class DeleteAccountTests extends AbstractIntegrationTest {
     void shouldFailToDeleteNonExistingAccount() throws Exception {
         String errorBody = client
                 .delete()
-                .uri("/api/accounts/{id}", 99999)
+                .uri("/accounts/{id}", 99999)
                 .exchange()
                 .expectStatus().isNotFound()
                 .expectBody(String.class)
