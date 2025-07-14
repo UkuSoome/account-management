@@ -40,7 +40,7 @@ http://localhost:8080
 
 ## Swagger UI
 
-API documentation and testing UI is available at:
+API documentation is available at:
 
 http://localhost:8080/swagger-ui/index.html
 
